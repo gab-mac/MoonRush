@@ -1,24 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import NavBar from './src/components/navBar';
+import AddRecordModal from './src/components/addRecordModal';
+import NavBar from './src/components/bottomIconsContainer';
+import { styles } from './src/components/styles';
 
 const App = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <>
-      <View style={styles.background}>
+      <View style={appStyles.background}>
         <Text>Hello, world!</Text>
+        <Text>Data base sync confirmation here</Text>
       </View>
-      <NavBar />
+      <AddRecordModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
+      <NavBar setModalVisible={setModalVisible} />
     </>
   );
 }
 
-const styles = StyleSheet.create({
+const appStyles = StyleSheet.create({
   background: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'blue'
+    backgroundColor: styles.color.primary
   }
 })
 
